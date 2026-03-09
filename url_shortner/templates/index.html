@@ -1,86 +1,653 @@
-<!DOCTYPE html>
-<html>
-
+<!-- <!DOCTYPE html>
+<html lang="en">
 <head>
-<title>URL Shortener</title>
-</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LinkVault — Register</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+  :root {
+    --bg: #0a0a0f;
+    --surface: #12121a;
+    --border: #1e1e2e;
+    --accent: #7c3aed;
+    --accent2: #06b6d4;
+    --text: #e2e2f0;
+    --muted: #6b6b8a;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(6,182,212,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(6,182,212,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    animation: gridMove 20s linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes gridMove {
+    from { transform: translateY(0); }
+    to   { transform: translateY(40px); }
+  }
+
+  .glow {
+    position: fixed;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    filter: blur(120px);
+    pointer-events: none;
+    opacity: 0.12;
+  }
+  .glow-1 { background: var(--accent2); top: -100px; right: -100px; }
+  .glow-2 { background: var(--accent); bottom: -100px; left: -100px; }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 48px 40px;
+    width: 100%;
+    max-width: 420px;
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 0.5s ease forwards;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+  }
+  .logo span { color: var(--accent); }
+
+  .subtitle {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 36px;
+  }
+
+  label {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  input {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  input:focus { border-color: var(--accent2); }
+
+  button {
+    width: 100%;
+    background: var(--accent2);
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 13px;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.1s;
+    margin-top: 4px;
+  }
+
+  button:hover { opacity: 0.85; }
+  button:active { transform: scale(0.98); }
+
+  .footer {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .footer a { color: var(--accent); text-decoration: none; }
+  .footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="glow glow-1"></div>
+<div class="glow glow-2"></div>
+
+<div class="card">
+  <div class="logo">Link<span>Vault</span></div>
+  <div class="subtitle">Create your account</div>
+
+  <form method="post">
+    <label>Username</label>
+    <input name="username" placeholder="choose_a_username" required autofocus>
+
+    <label>Password</label>
+    <input name="password" type="password" placeholder="••••••••" required>
+
+    <button type="submit">Create Account →</button>
+  </form>
+
+  <div class="footer">
+    Already have an account? <a href="/login">Sign in</a>
+  </div>
+</div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LinkVault — Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0f;
+    --surface: #12121a;
+    --surface2: #16161f;
+    --border: #1e1e2e;
+    --accent: #7c3aed;
+    --accent2: #06b6d4;
+    --green: #10b981;
+    --red: #ef4444;
+    --text: #e2e2f0;
+    --muted: #6b6b8a;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    min-height: 100vh;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(124,58,237,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(124,58,237,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 32px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    letter-spacing: -0.5px;
+  }
+  .logo span { color: var(--accent); }
+
+  .nav-right { display: flex; align-items: center; gap: 16px; }
+
+  .logout-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    padding: 7px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .logout-btn:hover { border-color: var(--red); color: var(--red); }
+
+  /* MAIN */
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .page-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    letter-spacing: -1px;
+    margin-bottom: 4px;
+  }
+
+  .page-sub {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 36px;
+  }
+
+  /* CREATE FORM */
+  .create-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px;
+    margin-bottom: 36px;
+  }
+
+  .create-card h3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    margin-bottom: 20px;
+    color: var(--muted);
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 2px;
+  }
+
+  .form-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+  }
+
+  .form-group { display: flex; flex-direction: column; gap: 6px; flex: 1; min-width: 180px; }
+
+  .form-group label {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  input[type="text"], input[type="url"], input[type="number"] {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    padding: 10px 14px;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+
+  input:focus { border-color: var(--accent); }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 10px 24px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: opacity 0.2s, transform 0.1s;
+    height: 40px;
+  }
+
+  .btn-primary:hover { opacity: 0.85; }
+  .btn-primary:active { transform: scale(0.97); }
+
+  /* TABLE */
+  .table-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .table-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .table-header h3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  .link-count {
+    background: var(--border);
+    color: var(--muted);
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+
+  thead th {
+    background: var(--surface2);
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+    border-bottom: 1px solid var(--border);
+  }
+
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+  }
+
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: rgba(124,58,237,0.04); }
+
+  td {
+    padding: 14px 16px;
+    vertical-align: middle;
+    max-width: 180px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .short-link {
+    color: var(--accent2);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .short-link:hover { text-decoration: underline; }
+
+  .original-url {
+    color: var(--muted);
+    max-width: 160px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+  }
+
+  /* STATUS BADGE */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+  }
+
+  .badge.active { background: rgba(16,185,129,0.12); color: var(--green); }
+  .badge.disabled { background: rgba(239,68,68,0.12); color: var(--red); }
+
+  .dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+
+  /* ACTIONS */
+  .actions { display: flex; align-items: center; gap: 8px; }
+
+  .btn-sm {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    text-decoration: none;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+
+  .btn-sm:hover { border-color: var(--accent); color: var(--accent); }
+  .btn-sm.danger:hover { border-color: var(--red); color: var(--red); }
+
+  /* INLINE EDIT FORM */
+  .edit-form { display: flex; gap: 6px; align-items: center; }
+
+  .edit-form input {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    padding: 5px 10px;
+    outline: none;
+    width: 130px;
+    transition: border-color 0.2s;
+  }
+
+  .edit-form input:focus { border-color: var(--accent2); }
+
+  .btn-save {
+    background: var(--accent2);
+    color: #000;
+    border: none;
+    border-radius: 6px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+
+  .btn-save:hover { opacity: 0.8; }
+
+  /* EMPTY STATE */
+  .empty {
+    text-align: center;
+    padding: 60px 24px;
+    color: var(--muted);
+  }
+
+  .empty-icon { font-size: 40px; margin-bottom: 12px; }
+  .empty p { font-size: 13px; }
+
+  /* CLICKS BADGE */
+  .clicks {
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .limit-text { color: var(--muted); font-size: 11px; }
+
+  .timestamp { color: var(--muted); font-size: 11px; }
+</style>
+</head>
 <body>
 
-<h2>URL Shortener</h2>
+<nav>
+  <div class="logo">Link<span>Vault</span></div>
+  <div class="nav-right">
+    <a href="/logout" class="logout-btn">Sign Out</a>
+  </div>
+</nav>
 
-<form action="/shorten" method="post">
-<input name="url" placeholder="Enter URL" required>
-<button type="submit">Shorten</button>
-</form>
+<main>
+  <div class="page-title">Dashboard</div>
+  <div class="page-sub">Create and manage your shortened links</div>
 
-<h3>Dashboard</h3>
+  <!-- CREATE FORM -->
+  <div class="create-card">
+    <h3>✦ New Short Link</h3>
+    <form action="/shorten" method="post">
+      <div class="form-row">
+        <div class="form-group" style="flex:3">
+          <label>Destination URL</label>
+          <input type="text" name="url" placeholder="https://example.com/long-url" required>
+        </div>
+        <div class="form-group" style="flex:1">
+          <label>Click Limit</label>
+          <input type="number" name="max_clicks" placeholder="Unlimited" min="1">
+        </div>
+        <button type="submit" class="btn-primary">Shorten →</button>
+      </div>
+    </form>
+  </div>
 
-<table border="1">
+  <!-- LINKS TABLE -->
+  <div class="table-card">
+    <div class="table-header">
+      <h3>Your Links</h3>
+      <span class="link-count">{{ links|length }} link{% if links|length != 1 %}s{% endif %}</span>
+    </div>
 
-<thead>
-<tr>
-<th>Original URL</th>
-<th>Short Link</th>
-<th>Clicks</th>
-</tr>
-</thead>
+    {% if links %}
+    <table>
+      <thead>
+        <tr>
+          <th>Short URL</th>
+          <th>Destination</th>
+          <th>Clicks</th>
+          <th>Status</th>
+          <th>Created</th>
+          <th>Last Access</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for link in links %}
+        <tr>
+          <td>
+            <a class="short-link" href="/{{ link.short }}" target="_blank">
+              /{{ link.short }}
+            </a>
+          </td>
 
-<tbody id="linksTable">
+          <td>
+            <span class="original-url" title="{{ link.original }}">{{ link.original }}</span>
+          </td>
 
-{% for link in links %}
-<tr>
-<td>{{link.original}}</td>
+          <td>
+            <span class="clicks" id="clicks-{{ link.short }}">{{ link.clicks }}</span>
+            {% if link.max_clicks %}
+              <span class="limit-text">/ {{ link.max_clicks }}</span>
+            {% else %}
+              <span class="limit-text">/ ∞</span>
+            {% endif %}
+          </td>
 
-<td>
-<a href="/{{link.short}}" target="_blank">
-{{request.host_url}}{{link.short}}
-</a>
-</td>
+          <td>
+            {% if link.active == 1 %}
+              <span class="badge active"><span class="dot"></span>Active</span>
+            {% else %}
+              <span class="badge disabled"><span class="dot"></span>Off</span>
+            {% endif %}
+          </td>
 
-<td>{{link.clicks}}</td>
+          <td>
+            <span class="timestamp">{{ link.created_at[:16] if link.created_at else '—' }}</span>
+          </td>
 
-</tr>
-{% endfor %}
+          <td>
+            <span class="timestamp">{{ link.last_accessed[:16] if link.last_accessed else 'Never' }}</span>
+          </td>
 
-</tbody>
+          <td>
+            <div class="actions">
+              <a href="/toggle/{{ link.short }}" class="btn-sm">
+                {% if link.active == 1 %}Disable{% else %}Enable{% endif %}
+              </a>
 
-</table>
+              <form action="/edit/{{ link.short }}" method="post" class="edit-form">
+                <input type="text" name="new_url" placeholder="New URL">
+                <button type="submit" class="btn-save">Save</button>
+              </form>
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
 
+    {% else %}
+    <div class="empty">
+      <div class="empty-icon">🔗</div>
+      <p>No links yet. Create your first short link above!</p>
+    </div>
+    {% endif %}
+  </div>
+</main>
 
 <script>
+  // Live click count updates only (no full table replacement)
+  async function updateClicks() {
+    try {
+      const res = await fetch("/api/links");
+      const data = await res.json();
+      data.forEach(link => {
+        const cell = document.getElementById("clicks-" + link.short);
+        if (cell) cell.innerText = link.clicks;
+      });
+    } catch(e) {}
+  }
 
-async function updateDashboard(){
-
-    const res = await fetch("/api/links");
-    const data = await res.json();
-
-    const table = document.getElementById("linksTable");
-
-    table.innerHTML = "";
-
-    data.forEach(link => {
-
-        const row = `
-        <tr>
-            <td>${link.original}</td>
-            <td>
-            <a href="/${link.short}" target="_blank">
-            ${window.location.origin}/${link.short}
-            </a>
-            </td>
-            <td>${link.clicks}</td>
-        </tr>
-        `;
-
-        table.innerHTML += row;
-
-    });
-
-}
-
-setInterval(updateDashboard,1000);
-
+  setInterval(updateClicks, 3000);
 </script>
 
 </body>

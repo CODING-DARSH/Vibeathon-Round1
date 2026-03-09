@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>URL Shortener</title>
+</head>
+
+<body>
+
+<h2>URL Shortener</h2>
+
+<form action="/shorten" method="post">
+<input name="url" placeholder="Enter URL" required>
+<button type="submit">Shorten</button>
+</form>
+
+<h3>Dashboard</h3>
+
+<table border="1">
+
+<thead>
+<tr>
+<th>Original URL</th>
+<th>Short Link</th>
+<th>Clicks</th>
+</tr>
+</thead>
+
+<tbody id="linksTable">
+
+{% for link in links %}
+<tr>
+<td>{{link.original}}</td>
+
+<td>
+<a href="/{{link.short}}" target="_blank">
+{{request.host_url}}{{link.short}}
+</a>
+</td>
+
+<td>{{link.clicks}}</td>
+
+</tr>
+{% endfor %}
+
+</tbody>
+
+</table>
+
+
+<script>
+
+async function updateDashboard(){
+
+    const res = await fetch("/api/links");
+    const data = await res.json();
+
+    const table = document.getElementById("linksTable");
+
+    table.innerHTML = "";
+
+    data.forEach(link => {
+
+        const row = `
+        <tr>
+            <td>${link.original}</td>
+            <td>
+            <a href="/${link.short}" target="_blank">
+            ${window.location.origin}/${link.short}
+            </a>
+            </td>
+            <td>${link.clicks}</td>
+        </tr>
+        `;
+
+        table.innerHTML += row;
+
+    });
+
+}
+
+setInterval(updateDashboard,1000);
+
+</script>
+
+</body>
+</html>
